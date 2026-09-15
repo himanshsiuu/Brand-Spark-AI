@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrandSpark AI — Small Business Promotional Package & Content Scaling Agent</title>
+  <meta name="description" content="Autonomous AI Agent helping homemade snack brands, boutique Airbnb stays, and small business creators generate video scripts, pitch decks, and social media campaigns.">
+  
+  <!-- Design System & Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Top App Navigation -->
+  <header class="app-header">
+    <div class="brand-container">
+      <div class="brand-icon">
+        <i data-lucide="sparkles" style="width: 22px; height: 22px;"></i>
+      </div>
+      <div>
+        <div class="brand-name">BrandSpark AI</div>
+        <div class="brand-tagline">Promotional Package Agent for Small Businesses</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <span id="api-status-badge" class="badge badge-brand">
+        <i data-lucide="sparkles" style="width: 12px; display: inline;"></i> Smart AI Mode
+      </span>
+      <button id="btn-view-vault" class="btn btn-secondary" title="View Saved Campaigns">
+        <i data-lucide="folder-heart"></i>
+        <span>Vault</span>
+      </button>
+      <button id="btn-api-settings" class="btn btn-icon" title="Gemini API Key Settings">
+        <i data-lucide="key"></i>
+      </button>
+      <button id="btn-theme-toggle" class="btn btn-icon" title="Toggle Dark/Light Mode">
+        <i data-lucide="sun"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Dual-Panel Studio -->
+  <main class="main-container">
+    
+    <!-- Left Panel: Input Studio -->
+    <aside class="input-studio">
+      <div class="studio-header">
+        <h2 class="studio-title">
+          <i data-lucide="sliders" style="color: var(--accent-primary);"></i>
+          <span>Campaign Studio</span>
+        </h2>
+        <span class="section-label">Input Details</span>
+      </div>
+
+      <!-- Presets Selector -->
+      <div class="presets-section">
+        <span class="section-label">⚡ Fast Presets:</span>
+        <div class="presets-chips">
+          <button type="button" class="preset-chip active" data-preset="snack">
+            🍿 Chai Masala Snack
+          </button>
+          <button type="button" class="preset-chip" data-preset="airbnb">
+            🏡 Boutique Airbnb Loft
+          </button>
+          <button type="button" class="preset-chip" data-preset="candle">
+            🕯️ Artisanal Candle Studio
+          </button>
+        </div>
+      </div>
+
+      <!-- Input Form -->
+      <form id="promo-form" class="form-grid">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="brandName" class="form-label">Brand Name</label>
+            <input type="text" id="brandName" class="form-input" placeholder="e.g. Chai Masala Crunch" required>
+          </div>
+          <div class="form-group">
+            <label for="category" class="form-label">Category</label>
+            <select id="category" class="form-select">
+              <option value="Food & Beverage">Food & Beverage</option>
+              <option value="Boutique Stay & Hospitality">Boutique Stay / Airbnb</option>
+              <option value="Handmade & Craft">Handmade & Craft</option>
+              <option value="Organic & Skincare">Organic & Wellness</option>
+              <option value="Sustainable Fashion">Sustainable Fashion</option>
+              <option value="Local Artisan Services">Local Services / Cafe</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="campaignFocus" class="form-label">Campaign Focus</label>
+          <select id="campaignFocus" class="form-select">
+            <option value="New Product Launch">New Product / Feature Launch</option>
+            <option value="Seasonal Promo / Holiday Drop">Seasonal Promo / Holiday Drop</option>
+            <option value="Local Retail & Stockist Pitch">Local Retail & Stockist Pitch</option>
+            <option value="Direct Bookings / UGC Push">Direct Bookings & UGC Viral Push</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="productName" class="form-label">Product or Feature Name</label>
+          <input type="text" id="productName" class="form-input" placeholder="e.g. Roasted Spiced Makhana" required>
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="form-label">
+            <span>Description & Ingredients</span>
+            <span class="form-hint">Key highlights</span>
+          </label>
+          <textarea id="description" class="form-textarea" placeholder="Describe the offering, materials, origin, or key experience..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="usp" class="form-label">
+            <span>Unique Selling Proposition (USP)</span>
+            <span class="form-hint">Why it wins</span>
+          </label>
+          <input type="text" id="usp" class="form-input" placeholder="e.g. Nostalgic tapri chai flavor in a guilt-free 90-kcal crunchy bite">
+        </div>
+
+        <div class="form-group">
+          <label for="targetAudience" class="form-label">Target Audience</label>
+          <input type="text" id="targetAudience" class="form-input" placeholder="e.g. Health-conscious professionals, foodies">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pricePoint" class="form-label">Price / Rate</label>
+            <input type="text" id="pricePoint" class="form-input" placeholder="e.g. $5.99 / ₹249">
+          </div>
+          <div class="form-group">
+            <label for="vibe" class="form-label">Brand Voice / Vibe</label>
+            <select id="vibe" class="form-select">
+              <option value="Warm & Nostalgic">Warm & Nostalgic</option>
+              <option value="Luxury & Refined">Luxury & Refined</option>
+              <option value="Playful & Fun">Playful & Fun</option>
+              <option value="Bold & Disruptive">Bold & Disruptive</option>
+              <option value="Cozy & Community-driven">Cozy & Community</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" id="btn-generate" class="btn btn-primary btn-lg" style="margin-top: 0.5rem; width: 100%;">
+          <i data-lucide="sparkles"></i>
+          <span>Generate Complete Package</span>
+        </button>
+
+      </form>
+    </aside>
+
+    <!-- Right Panel: Promotional Package Showcase -->
+    <section class="output-studio">
+      
+      <!-- Hero Package Meta Banner -->
+      <div class="status-hero">
+        <div class="hero-meta">
+          <div class="hero-badge-row">
+            <span id="hero-category-badge" class="badge badge-brand">Food & Beverage</span>
+            <span id="hero-focus-badge" class="badge badge-emerald">New Product Launch</span>
+            <span id="hero-vibe-badge" class="badge badge-cyan">Warm & Nostalgic</span>
+          </div>
+          <h1 id="hero-brand-name" style="font-size: 1.8rem; margin-top: 0.2rem;">Chai Masala Crunch</h1>
+          <p style="font-size: 0.88rem;">Autonomous 360° promotional assets ready for execution.</p>
+        </div>
+
+        <div class="hero-actions">
+          <button id="btn-save-vault" class="btn btn-secondary" title="Save to local campaign vault">
+            <i data-lucide="bookmark"></i>
+            <span>Save</span>
+          </button>
+          <button id="btn-download-md" class="btn btn-secondary" title="Export as Markdown document">
+            <i data-lucide="download"></i>
+            <span>Markdown</span>
+          </button>
+          <button id="btn-print-pkg" class="btn btn-primary" title="Print or save as PDF">
+            <i data-lucide="printer"></i>
+            <span>Print / PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Tone Refinement Bar -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+        <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; font-weight: 600;">
+          <i data-lucide="wand-2" style="color: var(--accent-primary); width: 18px;"></i>
+          <span>Live Tone Refiner:</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <select id="refine-tone-select" class="form-select" style="padding: 0.4rem 0.8rem; font-size: 0.82rem; width: auto;">
+            <option value="Warm & Nostalgic">Warm & Nostalgic</option>
+            <option value="Luxury & Refined">Luxury & High-End</option>
+            <option value="Playful & Fun">Playful & Viral Meme</option>
+            <option value="Urgent Launch Drop">High-Urgency Flash Drop</option>
+            <option value="Eco-Conscious & Earthy">Eco-Conscious & Earthy</option>
+          </select>
+          <button id="btn-refine-tone" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;">
+            <span>Apply Tone</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="package-tabs" aria-label="Promotional Package Sections">
+        <button type="button" class="tab-btn active" data-tab="video">
+          <i data-lucide="video"></i>
+          <span>1. Video Script & Storyboard</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="deck">
+          <i data-lucide="presentation"></i>
+          <span>2. Pitch Deck Outline</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="social">
+          <i data-lucide="share-2"></i>
+          <span>3. Social Media Pack</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="shotlist">
+          <i data-lucide="camera"></i>
+          <span>4. Shot-List & AI Prompts</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="calendar">
+          <i data-lucide="calendar"></i>
+          <span>5. 7-Day Rollout</span>
+        </button>
+      </nav>
+
+      <!-- Loader State -->
+      <div id="loading-state" class="generator-loading" style="display: none;">
+        <div class="pulse-spinner"></div>
+        <div>
+          <h3>Synthesizing Promotional Package...</h3>
+          <p>Analyzing target audience, optimizing hooks, and aligning omnichannel retail strategies.</p>
+        </div>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div id="output-content-area" class="tab-content-area">
+        
+        <!-- Tab 1: Video Script & Dual Distribution -->
+        <div id="tab-video" class="tab-panel active">
+          <div class="content-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon"><i data-lucide="clapperboard"></i></div>
+                <div>
+                  <h3>Short-Form Video Script (Reels / TikTok / Shorts)</h3>
+                  <p style="font-size: 0.82rem;">15-30 second viral storyboard engineered for high watch-time and conversion.</p>
+                </div>
+              </div>
+              <button class="btn btn-secondary" onclick="ExportUtils.copyToClipboard(document.getElementById('storyboard-container').innerText, 'Video script copied!')">
+                <i data-lucide="copy"></i> Copy Script
+              </button>
+            </div>
+
+            <!-- Hook Highlight -->
+            <div class="hook-banner">
+              <div class="hook-label">
+                <i data-lucide="flame" style="width: 16px;"></i>
+                <span>First 3 Seconds Hook (Visual + Verbal):</span>
+              </div>
+              <div id="video-hook-text" class="hook-text">
+                “The secret snack that just replaced 4 PM junk cravings across my entire office…”
+              </div>
+            </div>
+
+            <!-- Storyboard Timeline -->
+            <div id="storyboard-container" class="storyboard-timeline">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Dual Distribution Strategies -->
+            <div style="margin-top: 1rem;">
+              <h4 style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="arrow-left-right" style="color: var(--accent-primary);"></i>
+                <span>Dual Strategy: Online D2C Sales vs. Offline Retail Placement</span>
+              </h4>
+              <div class="dual-strategy-grid">
+                
+                <!-- Online Strategy -->
+                <div class="strategy-box online">
+                  <div class="strategy-header">
+                    <span class="strategy-title" style="color: var(--accent-emerald);">
+                      <i data-lucide="shopping-bag"></i> Online D2C Sales Engine
+                    </span>
+                    <span class="badge badge-emerald">Direct to Consumer</span>
+                  </div>
+                  <ul id="strategy-online-list" class="strategy-list">
+                    <!-- Populated by JS -->
+                  </ul>
+                </div>
+
+                <!-- Offline Strategy -->
+                <div class="strategy-box offline">
+                  <div class="strategy-header">
+                    <span class="strategy-title" style="color: var(--accent-cyan);">
+                      <i data-lucide="store"></i> Offline Retail & Stockist Placement
+                    </span>
+                    <span class="badge badge-cyan">Physical Retail</span>
+                  </div>
+                  <ul id="strategy-offline-list" class="strategy-list">
+                    <!-- Populated by JS -->
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tab 2: Pitch Deck & Customer Meeting Outline -->
+        <div id="tab-deck" class="tab-panel">
+          <div class="content-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon"><i data-lucide="layout"></i></div>
+                <div>
+                  <h3>Customer & Stockist Presentation Outline</h3>
+                  <p style="font-size: 0.82rem;">Structured slides, speaker talking points, and objection handling for high-stake pitches.</p>
+                </div>
+              </div>
+              <button class="btn btn-secondary" onclick="ExportUtils.copyToClipboard(document.getElementById('pitch-deck-container').innerText, 'Deck outline copied!')">
+                <i data-lucide="copy"></i> Copy Outline
+              </button>
+            </div>
+
+            <div id="pitch-deck-container" class="deck-container">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Social Media Pack -->
+        <div id="tab-social" class="tab-panel">
+          <div class="content-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon"><i data-lucide="messages-square"></i></div>
+                <div>
+                  <h3>Omnichannel Social Media Copy & Captions</h3>
+                  <p style="font-size: 0.82rem;">Tailored for Instagram feeds, LinkedIn B2B founder stories, TikTok, and VIP WhatsApp.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-grid">
+              
+              <!-- Instagram Card -->
+              <div class="social-platform-card">
+                <div class="social-platform-header">
+                  <span class="platform-tag" style="color: #ec4899;">
+                    <i data-lucide="instagram"></i> Instagram Feed & Carousel
+                  </span>
+                  <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('caption-instagram').innerText)">
+                    <i data-lucide="copy"></i>
+                  </button>
+                </div>
+                <div id="caption-instagram" class="social-content-preview"></div>
+              </div>
+
+              <!-- LinkedIn Card -->
+              <div class="social-platform-card">
+                <div class="social-platform-header">
+                  <span class="platform-tag" style="color: #0ea5e9;">
+                    <i data-lucide="linkedin"></i> LinkedIn B2B / Founder Story
+                  </span>
+                  <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('caption-linkedin').innerText)">
+                    <i data-lucide="copy"></i>
+                  </button>
+                </div>
+                <div id="caption-linkedin" class="social-content-preview"></div>
+              </div>
+
+              <!-- TikTok Card -->
+              <div class="social-platform-card">
+                <div class="social-platform-header">
+                  <span class="platform-tag" style="color: #f43f5e;">
+                    <i data-lucide="music"></i> TikTok & Shorts Caption
+                  </span>
+                  <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('caption-tiktok').innerText)">
+                    <i data-lucide="copy"></i>
+                  </button>
+                </div>
+                <div id="caption-tiktok" class="social-content-preview"></div>
+              </div>
+
+              <!-- WhatsApp Card -->
+              <div class="social-platform-card">
+                <div class="social-platform-header">
+                  <span class="platform-tag" style="color: #10b981;">
+                    <i data-lucide="message-circle"></i> WhatsApp Broadcast & Newsletter
+                  </span>
+                  <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('caption-whatsapp').innerText)">
+                    <i data-lucide="copy"></i>
+                  </button>
+                </div>
+                <div id="caption-whatsapp" class="social-content-preview"></div>
+              </div>
+
+            </div>
+
+            <!-- Hashtag Cloud -->
+            <div style="margin-top: 1rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                <span class="section-label">🏷️ Recommended Hashtag Cloud</span>
+                <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('hashtags-cluster').innerText)">
+                  <i data-lucide="copy"></i> Copy All Hashtags
+                </button>
+              </div>
+              <div id="hashtags-cluster" class="hashtag-cluster">
+                <!-- Hashtags inserted here -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tab 4: Shot-List & AI Image Prompts -->
+        <div id="tab-shotlist" class="tab-panel">
+          <div class="content-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon"><i data-lucide="aperture"></i></div>
+                <div>
+                  <h3>Production Shot-List & AI Visual Prompts</h3>
+                  <p style="font-size: 0.82rem;">Angles, framing, lighting instructions, and Midjourney/Imagen prompts.</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+              <table class="shotlist-table">
+                <thead>
+                  <tr>
+                    <th style="width: 160px;">Shot Type</th>
+                    <th>Action / Subject</th>
+                    <th>Framing & Lens</th>
+                    <th>Lighting & Setup</th>
+                  </tr>
+                </thead>
+                <tbody id="shotlist-tbody">
+                  <!-- Rows inserted by JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- AI Image Prompt Box -->
+            <div class="ai-prompt-box">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: 700; font-size: 0.9rem; color: var(--accent-secondary); display: flex; align-items: center; gap: 0.4rem;">
+                  <i data-lucide="wand-2" style="width: 16px;"></i> Ready-to-use AI Image Generator Prompt (Midjourney / Imagen)
+                </span>
+                <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('ai-image-prompt-text').innerText, 'AI prompt copied!')">
+                  <i data-lucide="copy"></i> Copy Prompt
+                </button>
+              </div>
+              <div id="ai-image-prompt-text" class="prompt-text">
+                <!-- AI prompt text -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tab 5: 7-Day Rollout Calendar -->
+        <div id="tab-calendar" class="tab-panel">
+          <div class="content-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon"><i data-lucide="calendar-check"></i></div>
+                <div>
+                  <h3>7-Day Omnichannel Rollout Calendar</h3>
+                  <p style="font-size: 0.82rem;">Daily step-by-step checklist balancing online buzz with brick-and-mortar execution.</p>
+                </div>
+              </div>
+              <button class="btn btn-secondary" onclick="ExportUtils.copyToClipboard(document.getElementById('calendar-container').innerText, 'Calendar schedule copied!')">
+                <i data-lucide="copy"></i> Copy Schedule
+              </button>
+            </div>
+
+            <div id="calendar-container" class="calendar-timeline">
+              <!-- Calendar days populated by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal: API Settings -->
+  <div id="api-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i data-lucide="key" style="color: var(--accent-primary); width: 20px; display: inline;"></i> Gemini API Configuration</h3>
+        <button type="button" class="modal-close-btn modal-close-trigger"><i data-lucide="x"></i></button>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary);">
+        Enter your Google Gemini API key to enable direct Gemini 3.7 Flash generation. If not provided, BrandSpark AI automatically operates in smart local synthesis mode.
+      </p>
+      <div class="form-group">
+        <label for="modal-api-key-input" class="form-label">Google Gemini API Key</label>
+        <input type="password" id="modal-api-key-input" class="form-input" placeholder="AIzaSy...">
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem;">
+        <button type="button" class="btn btn-secondary modal-close-trigger">Cancel</button>
+        <button type="button" id="btn-save-api-key" class="btn btn-primary">Save Key</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Campaign Vault -->
+  <div id="vault-modal" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i data-lucide="folder-heart" style="color: var(--accent-secondary); width: 20px; display: inline;"></i> Campaign Vault</h3>
+        <button type="button" class="modal-close-btn modal-close-trigger"><i data-lucide="x"></i></button>
+      </div>
+      <div id="vault-campaign-list" style="display: flex; flex-direction: column; gap: 0.6rem; max-height: 380px; overflow-y: auto;">
+        <!-- Saved campaigns list -->
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+        <button type="button" class="btn btn-secondary modal-close-trigger">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Script Initializers -->
+  <script src="js/storage.js"></script>
+  <script src="js/export_utils.js"></script>
+  <script src="js/agent.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

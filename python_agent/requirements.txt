@@ -1,0 +1,4 @@
+# BrandSpark AI Dependencies
+# Built with standard library first. Optional dependencies for external workflows:
+requests>=2.31.0
+python-dotenv>=1.0.0
