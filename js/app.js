@@ -264,7 +264,72 @@ const App = {
       `).join('');
     }
 
-    // Dual Distribution Strategy
+    // 1. Hook Variations
+    const hookVarsEl = document.getElementById('hook-variations-container');
+    if (hookVarsEl && video.hookVariations) {
+      hookVarsEl.innerHTML = video.hookVariations.map((hv, idx) => `
+        <div style="background:var(--bg-tertiary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:0.6rem 0.85rem;display:flex;justify-content:space-between;align-items:center;gap:0.75rem;">
+          <div style="font-size:0.85rem;color:var(--text-primary);">
+            <strong style="color:var(--accent-secondary);font-size:0.75rem;text-transform:uppercase;display:block;margin-bottom:0.15rem;">[${hv.type}]</strong>
+            ${hv.hook}
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard('${hv.hook.replace(/'/g, "\\'")}', 'Hook copied!')" title="Copy Hook">
+            <i data-lucide="copy" style="width:13px;"></i> Copy
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // 2. Paid Meta / Instagram Reel Ad Script
+    const paidAdEl = document.getElementById('paid-ad-content');
+    if (paidAdEl && video.paidAdScript) {
+      paidAdEl.innerHTML = `
+        <div style="font-size:0.8rem;color:var(--accent-cyan);font-weight:700;margin-bottom:0.25rem;">
+          🎯 ${video.paidAdScript.format} • ${video.paidAdScript.objective}
+        </div>
+        ${video.paidAdScript.structure.map(st => `
+          <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:0.75rem;font-size:0.85rem;">
+            <div style="font-weight:700;color:var(--accent-primary);margin-bottom:0.3rem;">${st.phase}</div>
+            <div style="color:var(--text-secondary);margin-bottom:0.2rem;"><strong>🎥 Visual:</strong> ${st.visual}</div>
+            <div style="color:var(--text-primary);margin-bottom:0.2rem;"><strong>🎙️ Audio / VO:</strong> "${st.audioVO}"</div>
+            <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-amber);background:var(--bg-input);padding:0.2rem 0.4rem;border-radius:4px;display:inline-block;">${st.textOverlay}</div>
+          </div>
+        `).join('')}
+      `;
+    }
+
+    // 3. Influencer & UGC Collaboration Brief
+    const infBriefEl = document.getElementById('influencer-brief-content');
+    if (infBriefEl && video.influencerBrief) {
+      infBriefEl.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:0.6rem;font-size:0.85rem;">
+          <div><strong>👤 Ideal Creator Profile:</strong> <span style="color:var(--text-secondary);">${video.influencerBrief.idealCreatorProfile}</span></div>
+          <div><strong>📦 Deliverables:</strong> <span style="color:var(--text-secondary);">${video.influencerBrief.deliverables}</span></div>
+          <div>
+            <strong>💡 Key Talking Points:</strong>
+            <ul style="list-style:disc;padding-left:1.2rem;color:var(--text-secondary);margin-top:0.2rem;">
+              ${video.influencerBrief.keyTalkingPoints.map(tp => `<li>${tp}</li>`).join('')}
+            </ul>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.3rem;">
+            <div style="background:rgba(16, 185, 129, 0.08);border:1px solid rgba(16, 185, 129, 0.2);padding:0.6rem;border-radius:var(--radius-md);">
+              <strong style="color:var(--accent-emerald);font-size:0.78rem;text-transform:uppercase;">✅ Creative DOs:</strong>
+              <ul style="list-style:none;padding-left:0;margin-top:0.3rem;font-size:0.8rem;color:var(--text-secondary);">
+                ${video.influencerBrief.creativeDos.map(d => `<li>• ${d}</li>`).join('')}
+              </ul>
+            </div>
+            <div style="background:rgba(239, 68, 68, 0.08);border:1px solid rgba(239, 68, 68, 0.2);padding:0.6rem;border-radius:var(--radius-md);">
+              <strong style="color:#ef4444;font-size:0.78rem;text-transform:uppercase;">❌ Creative DONTs:</strong>
+              <ul style="list-style:none;padding-left:0;margin-top:0.3rem;font-size:0.8rem;color:var(--text-secondary);">
+                ${video.influencerBrief.creativeDonts.map(d => `<li>• ${d}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 4. Dual Distribution Strategy
     const onlineList = document.getElementById('strategy-online-list');
     if (onlineList) {
       onlineList.innerHTML = video.dualStrategy.online.map(item => `

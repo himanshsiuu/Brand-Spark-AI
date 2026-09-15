@@ -34,19 +34,48 @@ const ExportUtils = {
     md += `**Generated on:** ${new Date().toLocaleDateString()} via BrandSpark AI\n\n`;
     md += `---\n\n`;
 
-    // 1. Video Script
+    // 1. Video Script & Ad Package
     if (pkg.videoScript) {
-      md += `## 🎬 1. Short-Form Video Script & Storyboard\n`;
-      md += `**Target Platforms:** Reels, TikTok, YouTube Shorts\n`;
-      md += `**Hook (First 3s):** ${pkg.videoScript.hook}\n\n`;
-      md += `### Storyboard Timeline\n`;
+      md += `## 🎬 1. Short-Form Video Script, Paid Ads & Storyboard\n`;
+      md += `**Target Platforms:** Instagram Reels, TikTok, YouTube Shorts, Meta Paid Ads\n`;
+      md += `**Primary Hook (First 3s):** ${pkg.videoScript.hook}\n\n`;
+
+      if (pkg.videoScript.hookVariations && pkg.videoScript.hookVariations.length > 0) {
+        md += `### ⚡ 5 Viral Hook Angles for A/B Testing\n`;
+        pkg.videoScript.hookVariations.forEach(hv => {
+          md += `- **[${hv.type}]** ${hv.hook}\n`;
+        });
+        md += `\n`;
+      }
       
+      md += `### Organic Reel Storyboard Timeline\n`;
       pkg.videoScript.scenes.forEach(s => {
         md += `#### Scene ${s.sceneNumber}: ${s.duration}\n`;
         md += `- **Camera & Visual:** ${s.visual}\n`;
         md += `- **Voiceover / Audio:** ${s.voiceover}\n`;
         md += `- **On-Screen Text:** \`${s.onScreenText}\`\n\n`;
       });
+
+      if (pkg.videoScript.paidAdScript) {
+        md += `### 🎯 15-Second Paid Meta / Instagram Reel Ad (High ROAS Formula)\n`;
+        md += `*Objective: ${pkg.videoScript.paidAdScript.objective}*\n\n`;
+        pkg.videoScript.paidAdScript.structure.forEach(st => {
+          md += `#### ${st.phase}\n`;
+          md += `- **Visual:** ${st.visual}\n`;
+          md += `- **Audio / Voiceover:** "${st.audioVO}"\n`;
+          md += `- **Text Overlay:** \`${st.textOverlay}\`\n\n`;
+        });
+      }
+
+      if (pkg.videoScript.influencerBrief) {
+        md += `### 🤝 UGC Creator & Influencer Collaboration Brief\n`;
+        md += `- **Deliverables:** ${pkg.videoScript.influencerBrief.deliverables}\n`;
+        md += `- **Ideal Profile:** ${pkg.videoScript.influencerBrief.idealCreatorProfile}\n`;
+        md += `- **Key Talking Points:**\n`;
+        pkg.videoScript.influencerBrief.keyTalkingPoints.forEach(tp => md += `  - ${tp}\n`);
+        md += `- **Creative DOs:** ${pkg.videoScript.influencerBrief.creativeDos.join(', ')}\n`;
+        md += `- **Creative DONTs:** ${pkg.videoScript.influencerBrief.creativeDonts.join(', ')}\n\n`;
+      }
 
       md += `### Dual Distribution Strategy\n`;
       md += `#### 🛒 Online D2C Sales Engine:\n`;

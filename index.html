@@ -57,18 +57,39 @@
         <span class="section-label">Input Details</span>
       </div>
 
-      <!-- Presets Selector -->
+      <!-- Presets Selector with Categories -->
       <div class="presets-section">
-        <span class="section-label">⚡ Fast Presets:</span>
-        <div class="presets-chips">
-          <button type="button" class="preset-chip active" data-preset="snack">
-            🍿 Chai Masala Snack
+        <span class="section-label">⚡ Fast Presets & Templates:</span>
+        <div class="presets-chips" style="gap: 0.4rem;">
+          <button type="button" class="preset-chip active" data-preset="snack_chaimasala" title="Handcrafted Spiced Makhana Snack">
+            ☕ Chai Masala Crunch
           </button>
-          <button type="button" class="preset-chip" data-preset="airbnb">
-            🏡 Boutique Airbnb Loft
+          <button type="button" class="preset-chip" data-preset="snack_jhalmuri" title="Kolkata Street-Style Mustard Spiced Mix">
+            🌶️ Kolkata Jhalmuri
           </button>
-          <button type="button" class="preset-chip" data-preset="candle">
-            🕯️ Artisanal Candle Studio
+          <button type="button" class="preset-chip" data-preset="snack_kashmiri" title="Royal Saffron & Cardamom Glazed Almonds">
+            🍯 Kashmiri Saffron Bites
+          </button>
+          <button type="button" class="preset-chip" data-preset="beverage_filtercoffee" title="Cold Brew Filter Coffee Concentrate">
+            ☕ Kaapi Royale Coffee
+          </button>
+          <button type="button" class="preset-chip" data-preset="ad_meta_scale" title="Aam Papad Chili Lime Glazed Cashews">
+            🥭 Aam Papad Cashews
+          </button>
+          <button type="button" class="preset-chip" data-preset="reel_viral_snack" title="Viral 3s ASMR Taro Truffle Chips">
+            🎬 Viral Taro Truffle Reel
+          </button>
+          <button type="button" class="preset-chip" data-preset="airbnb_cabin" title="Cedarwood Glasshouse Loft in Forest">
+            🏡 Forest Glasshouse Loft
+          </button>
+          <button type="button" class="preset-chip" data-preset="airbnb_goavilla" title="150-Yr Indo-Portuguese Courtyard Villa">
+            🌴 Goa Heritage Villa
+          </button>
+          <button type="button" class="preset-chip" data-preset="artisan_candle" title="Handmade Soy & Fig Amber Jar Candle">
+            🕯️ Smoked Fig Candle
+          </button>
+          <button type="button" class="preset-chip" data-preset="organic_skincare" title="Ayurvedic Saffron Night Glow Serum">
+            🌸 Ayurvedic Glow Serum
           </button>
         </div>
       </div>
@@ -84,7 +105,7 @@
           <div class="form-group">
             <label for="category" class="form-label">Category</label>
             <select id="category" class="form-select">
-              <option value="Food & Beverage">Food & Beverage</option>
+              <option value="Food & Beverage">Food & Beverage (Snacks/Drinks)</option>
               <option value="Boutique Stay & Hospitality">Boutique Stay / Airbnb</option>
               <option value="Handmade & Craft">Handmade & Craft</option>
               <option value="Organic & Skincare">Organic & Wellness</option>
@@ -97,16 +118,18 @@
         <div class="form-group">
           <label for="campaignFocus" class="form-label">Campaign Focus</label>
           <select id="campaignFocus" class="form-select">
-            <option value="New Product Launch">New Product / Feature Launch</option>
-            <option value="Seasonal Promo / Holiday Drop">Seasonal Promo / Holiday Drop</option>
-            <option value="Local Retail & Stockist Pitch">Local Retail & Stockist Pitch</option>
-            <option value="Direct Bookings / UGC Push">Direct Bookings & UGC Viral Push</option>
+            <option value="Instagram Reel / TikTok Viral Promotion">Instagram Reel & TikTok Viral Promotion</option>
+            <option value="Paid Meta / Instagram Ad (High ROAS)">Paid Meta & Instagram Reel Ad (High ROAS)</option>
+            <option value="Influencer Collab & UGC Creator Campaign">Influencer Gifting & UGC Creator Campaign</option>
+            <option value="New Product Launch">New Product / Flavor Launch Drop</option>
+            <option value="Local Retail & Stockist Pitch">Local Retail & Stockist Placement Pitch</option>
+            <option value="Direct Bookings / UGC Push">Direct Airbnb & Stay Bookings Push</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="productName" class="form-label">Product or Feature Name</label>
-          <input type="text" id="productName" class="form-input" placeholder="e.g. Roasted Spiced Makhana" required>
+          <input type="text" id="productName" class="form-input" placeholder="e.g. Roasted Spiced Makhana with Chai Masala" required>
         </div>
 
         <div class="form-group">
@@ -139,8 +162,8 @@
             <label for="vibe" class="form-label">Brand Voice / Vibe</label>
             <select id="vibe" class="form-select">
               <option value="Warm & Nostalgic">Warm & Nostalgic</option>
-              <option value="Luxury & Refined">Luxury & Refined</option>
-              <option value="Playful & Fun">Playful & Fun</option>
+              <option value="Luxury & Refined">Luxury & High-End</option>
+              <option value="Playful & Fun">Playful & Viral Meme</option>
               <option value="Bold & Disruptive">Bold & Disruptive</option>
               <option value="Cozy & Community-driven">Cozy & Community</option>
             </select>
@@ -163,7 +186,7 @@
         <div class="hero-meta">
           <div class="hero-badge-row">
             <span id="hero-category-badge" class="badge badge-brand">Food & Beverage</span>
-            <span id="hero-focus-badge" class="badge badge-emerald">New Product Launch</span>
+            <span id="hero-focus-badge" class="badge badge-emerald">Instagram Reel Promotion</span>
             <span id="hero-vibe-badge" class="badge badge-cyan">Warm & Nostalgic</span>
           </div>
           <h1 id="hero-brand-name" style="font-size: 1.8rem; margin-top: 0.2rem;">Chai Masala Crunch</h1>
@@ -190,18 +213,19 @@
       <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
         <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; font-weight: 600;">
           <i data-lucide="wand-2" style="color: var(--accent-primary); width: 18px;"></i>
-          <span>Live Tone Refiner:</span>
+          <span>Live Tone & Angle Refiner:</span>
         </div>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <select id="refine-tone-select" class="form-select" style="padding: 0.4rem 0.8rem; font-size: 0.82rem; width: auto;">
             <option value="Warm & Nostalgic">Warm & Nostalgic</option>
             <option value="Luxury & Refined">Luxury & High-End</option>
             <option value="Playful & Fun">Playful & Viral Meme</option>
+            <option value="Bold & Disruptive">Bold & Disruptive</option>
             <option value="Urgent Launch Drop">High-Urgency Flash Drop</option>
-            <option value="Eco-Conscious & Earthy">Eco-Conscious & Earthy</option>
+            <option value="Cozy & Community-driven">Cozy & Community</option>
           </select>
           <button id="btn-refine-tone" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;">
-            <span>Apply Tone</span>
+            <span>Apply Angle</span>
           </button>
         </div>
       </div>
@@ -210,7 +234,7 @@
       <nav class="package-tabs" aria-label="Promotional Package Sections">
         <button type="button" class="tab-btn active" data-tab="video">
           <i data-lucide="video"></i>
-          <span>1. Video Script & Storyboard</span>
+          <span>1. Video Scripts & Paid Ads</span>
         </button>
         <button type="button" class="tab-btn" data-tab="deck">
           <i data-lucide="presentation"></i>
@@ -242,9 +266,11 @@
       <!-- Tab Content Area -->
       <div id="output-content-area" class="tab-content-area">
         
-        <!-- Tab 1: Video Script & Dual Distribution -->
+        <!-- Tab 1: Video Scripts, Paid Ads & Dual Distribution -->
         <div id="tab-video" class="tab-panel active">
           <div class="content-card">
+            
+            <!-- Section 1A: Primary Hook -->
             <div class="card-header">
               <div class="card-title-group">
                 <div class="card-icon"><i data-lucide="clapperboard"></i></div>
@@ -262,19 +288,67 @@
             <div class="hook-banner">
               <div class="hook-label">
                 <i data-lucide="flame" style="width: 16px;"></i>
-                <span>First 3 Seconds Hook (Visual + Verbal):</span>
+                <span>Primary First 3-Seconds Hook:</span>
               </div>
               <div id="video-hook-text" class="hook-text">
                 “The secret snack that just replaced 4 PM junk cravings across my entire office…”
               </div>
             </div>
 
+            <!-- Hook Variations Card -->
+            <div style="background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <span class="section-label">⚡ 5 High-Converting Viral Hook Angles (For A/B Testing)</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Click to copy any hook</span>
+              </div>
+              <div id="hook-variations-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
             <!-- Storyboard Timeline -->
+            <h4 style="margin-top: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+              <i data-lucide="film" style="color: var(--accent-primary);"></i>
+              <span>Organic Reel & TikTok Storyboard Timeline</span>
+            </h4>
             <div id="storyboard-container" class="storyboard-timeline">
               <!-- Dynamically populated -->
             </div>
 
-            <!-- Dual Distribution Strategies -->
+            <!-- Section 1B: Paid Meta / Instagram Reel Ad -->
+            <div style="margin-top: 1.25rem; background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-lg); padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+                <div>
+                  <h4 style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-cyan);">
+                    <i data-lucide="badge-dollar-sign"></i> 15-Second Paid Instagram / Meta Reel Ad Script
+                  </h4>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">Direct conversion formula: Pattern Interrupt &rarr; Agitation & Demo &rarr; High-ROAS Offer CTA.</p>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('paid-ad-content').innerText, 'Paid ad script copied!')">
+                  <i data-lucide="copy"></i> Copy Ad Script
+                </button>
+              </div>
+              <div id="paid-ad-content" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <!-- Section 1C: Influencer / UGC Collaboration Brief -->
+            <div style="margin-top: 1rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h4 style="display: flex; align-items: center; gap: 0.5rem;">
+                  <i data-lucide="users" style="color: var(--accent-secondary);"></i> Influencer & UGC Creator Campaign Brief
+                </h4>
+                <button class="btn btn-secondary btn-sm" onclick="ExportUtils.copyToClipboard(document.getElementById('influencer-brief-content').innerText, 'Creator brief copied!')">
+                  <i data-lucide="copy"></i> Copy Brief
+                </button>
+              </div>
+              <div id="influencer-brief-content">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <!-- Section 1D: Dual Distribution Strategies -->
             <div style="margin-top: 1rem;">
               <h4 style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
                 <i data-lucide="arrow-left-right" style="color: var(--accent-primary);"></i>
